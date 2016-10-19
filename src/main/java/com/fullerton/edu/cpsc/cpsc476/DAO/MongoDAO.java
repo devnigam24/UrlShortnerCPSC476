@@ -12,13 +12,15 @@ public class MongoDAO {
 	private static MongoDatabase urlshortnerDB;
 	
 	public MongoDAO(){
-		try{
-			MongoDAO.ourMongoClient = new MongoClient("localhost", 27017);
-			if(ourMongoClient != null){
-				MongoDAO.urlshortnerDB = ourMongoClient.getDatabase("urlshortnerDB");
+		synchronized (this) {
+			try{
+				MongoDAO.ourMongoClient = new MongoClient("localhost", 27017);
+				if(ourMongoClient != null){
+					MongoDAO.urlshortnerDB = ourMongoClient.getDatabase("urlshortnerDB");
+				}
+			}catch(Exception e){
+				System.out.println(e.getMessage());
 			}
-		}catch(Exception e){
-			System.out.println(e.getMessage());
 		}		
 	}
 	
