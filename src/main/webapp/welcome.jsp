@@ -4,25 +4,32 @@
 <html>
 <head>
 <title>Home</title>
-<%@include file="includes/assets.inc"%>
+<%@include file="includes/assets.jsp"%>
 </head>
 <body>
 <h1>Welcome  <%=thisUser.getUsername() %>!!!!!</h1>
 <h1>Welcome  <%=thisUser.getEmailID() %>!!!!!</h1>
-
-
-			<div class="row col s4">
-				<form action="UrlShortnerServlet" method="post">
-					<div class="input-field col s10">
-						<input id="longUrl" name="longUrl" type="text"> <label
-							for="longUrl">longUrl</label>
+			
+		<div class="row col s4">
+			<form action="LogOut" method="post">
+				<div class="input-field col s6 right">
+					<input type="submit" value="Logout">
+				</div>
+			</form>
+		</div>
+			
+		<div class="row col s4">
+			<form action="UrlShortnerServlet" method="post">
+				<div class="input-field col s10">
+					<input id="longUrl" name="longUrl" type="text"> <label
+						for="longUrl">longUrl</label>
+				</div>
+				<div class="row">
+					<div class="input-field col s6">
+						<input type="submit" value="Short It">
 					</div>
-					<div class="row">
-						<div class="input-field col s6">
-							<input type="submit" value="Short It">
-						</div>
-					</div>
-				</form>
-			</div>
+				</div>
+			</form>
+		</div>
 </body>
 </html>
