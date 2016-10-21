@@ -33,6 +33,13 @@ public class SignUpServlet extends HttpServlet {
 			ShowErrorPageUtil.redirectToErrorPage(req, res, "signUp.jsp", ErrorAndMessages.usernameNull);
 			return;
 		}
+		if (req.getParameter("email") != null && req.getParameter("email") != "") {
+			email = req.getParameter("email");
+			req.setAttribute("email", email);
+		} else {
+			ShowErrorPageUtil.redirectToErrorPage(req, res, "signUp.jsp", ErrorAndMessages.emailNull);
+			return;
+		}
 		if (req.getParameter("password") != null && req.getParameter("password") != "") {
 			password = req.getParameter("password");
 		} else {
@@ -44,13 +51,6 @@ public class SignUpServlet extends HttpServlet {
 
 		} else {
 			ShowErrorPageUtil.redirectToErrorPage(req, res, "signUp.jsp", ErrorAndMessages.passwordNull);
-			return;
-		}
-		if (req.getParameter("email") != null && req.getParameter("email") != "") {
-			email = req.getParameter("email");
-			req.setAttribute("email", email);
-		} else {
-			ShowErrorPageUtil.redirectToErrorPage(req, res, "signUp.jsp", ErrorAndMessages.emailNull);
 			return;
 		}
 		if (password.equals(confirm)) {
