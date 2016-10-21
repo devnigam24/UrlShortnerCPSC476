@@ -1,10 +1,10 @@
 <html>
 <head>
-<%@include file="includes/assets.inc"%>
+<%@include file="includes/assets.jsp"%>
 </head>
 <body>
 	<%
-		String username = (String) request.getAttribute("name");
+		String username = (String) request.getAttribute("username");
 		String email = (String) request.getAttribute("email");
 		String errorMessage = (String) request.getAttribute("errorMessage");
 		String passwordDonotMatch = (String) request.getAttribute("passwordDonotMatch");
@@ -13,7 +13,7 @@
 		<%
 			if (errorMessage != null) {
 		%>
-		<%=errorMessage%>
+		<h3 style="color: orangered;text-align: center;"><%=errorMessage%></h3>
 		<%
 			}
 		%>
