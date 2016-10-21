@@ -14,14 +14,15 @@
 	
 	<servlet>
 		<servlet-name>LoginServlet</servlet-name>
-		<servlet-class>LoginServlet</servlet-class>
+		<servlet-class>com.fullerton.edu.cpsc.cpsc476.servlets.LoginServlet</servlet-class>
 	</servlet>
 	<servlet>
-		<description>
-		</description>
-		<display-name>UrlShortnerServlet</display-name>
 		<servlet-name>UrlShortnerServlet</servlet-name>
 		<servlet-class>com.fullerton.edu.cpsc.cpsc476.servlets.UrlShortnerServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>LogOut</servlet-name>
+		<servlet-class>com.fullerton.edu.cpsc.cpsc476.servlets.LogOut</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
@@ -36,5 +37,9 @@
 	<servlet-mapping>
 		<servlet-name>UrlShortnerServlet</servlet-name>
 		<url-pattern>/UrlShortnerServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>LogOut</servlet-name>
+		<url-pattern>/LogOut</url-pattern>
 	</servlet-mapping>
 </web-app>
