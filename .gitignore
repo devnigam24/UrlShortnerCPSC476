@@ -45,7 +45,10 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
-
-# my custom added folders and files
 *.class
-target/*
+*.jar
+/target
+/.settings
+*.classpath
+*.gitattributes
+*.project
