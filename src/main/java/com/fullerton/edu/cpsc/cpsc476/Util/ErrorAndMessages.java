@@ -6,7 +6,7 @@ public class ErrorAndMessages {
 	
 	public static String serverDown = "500 Internal Server Error!!! Please try again!!!";
 	
-	public static String inforCompromised = "Information compromised user will be signout immediately \n Please try again !!";
+	public static String inforCompromised = "User Credentials compromised user will be signout immediately \n Please try again !!";
 	
 	public static String loginCredentialMisMatch = "User name and password does not match!!! Please try again...";
 	
