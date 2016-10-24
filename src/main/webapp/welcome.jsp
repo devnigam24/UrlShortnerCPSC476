@@ -7,10 +7,14 @@
 <%@include file="includes/assets.jsp"%>
 <%@ page import="com.fullerton.edu.cpsc.cpsc476.pojo.NewUserDetails" %>
 <%! 
-	String userName = "";
-	String userEmail = "";
+	
 %>
 <%
+	String userName = "";
+	String userEmail = "";
+	String longUrl = (String)request.getAttribute("longUrl");
+	String shortUrl = (String)request.getAttribute("shortUrl");
+	
 	NewUserDetails thisUser = (NewUserDetails)session.getAttribute("userInsession");
 
 	if(thisUser == null || thisUser.getUsername().equals(null) || thisUser.getUsername().equals("")){
@@ -34,19 +38,56 @@
 				</div>
 			</form>
 		</div>
-			
+		<div class="row col s4">
+			<form action="UpdateUrlCountServlet" method="post">
+				<input type="hidden" name="action" value="showPage"/>
+				<div class="input-field col s6 right">
+					<input type="submit" value="View All Urls and its count">
+				</div>
+			</form>
+		</div>
 		<div class="row col s4">
 			<form action="UrlShortnerServlet" method="post">
-				<div class="input-field col s10">
-					<input id="longUrl" name="longUrl" type="text"> <label
-						for="longUrl">longUrl</label>
+				<div class="input-field col s6">
+					<input id="longUrl" name="longUrl" type="text" <%if (longUrl != null) %> value=<%=longUrl%>> 
+					<label for="longUrl">longUrl</label>
 				</div>
-				<div class="row">
+				<div class="input-field col s4">
+					<a id="shortUrl" onclick="updateClickCount(this)" <%-- href="<%=longUrl %>" target="_blank" --%>>
+						<%if (shortUrl != null) %><%=shortUrl %></a>					
+				</div>
+				<div class="input-field col s4">
 					<div class="input-field col s6">
 						<input type="submit" value="Short It">
 					</div>
 				</div>
 			</form>
 		</div>
+		<div id="someID"></div>
 </body>
 </html>
+
+<script type="text/javascript">
+	function updateClickCount(event) {
+		$.ajax({
+			url : "UpdateUrlCountServlet",
+			success : updateUrlCountInHTML,
+			error : ajaxErrorFunction,
+			dataType : "html",
+			data : "action=incrementCount&urlClicked="+event.text.trim(),
+			type : "GET"
+		}).done(function() {
+			console.log("ajax call over successfully");
+		});
+
+	}
+	function ajaxErrorFunction() {
+		alert("ajax error")
+	}
+
+	function updateUrlCountInHTML(data) {
+		console.log("ajax Success");
+		$("#someID").html("");
+		$("#someID").html(data);
+	}
+</script>

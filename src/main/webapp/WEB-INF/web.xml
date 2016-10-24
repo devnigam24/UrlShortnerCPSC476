@@ -24,6 +24,13 @@
 		<servlet-name>LogOut</servlet-name>
 		<servlet-class>com.fullerton.edu.cpsc.cpsc476.servlets.LogOut</servlet-class>
 	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>UpdateUrlCountServlet</display-name>
+		<servlet-name>UpdateUrlCountServlet</servlet-name>
+		<servlet-class>com.fullerton.edu.cpsc.cpsc476.servlets.UpdateUrlCountServlet</servlet-class>
+	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>SignUpServlet</servlet-name>
@@ -41,5 +48,9 @@
 	<servlet-mapping>
 		<servlet-name>LogOut</servlet-name>
 		<url-pattern>/LogOut</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>UpdateUrlCountServlet</servlet-name>
+		<url-pattern>/UpdateUrlCountServlet</url-pattern>
 	</servlet-mapping>
 </web-app>
