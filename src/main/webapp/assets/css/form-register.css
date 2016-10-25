@@ -13,3 +13,8 @@ html{
 fieldset{
 	width=50em;
 }
+.right{
+	float:right;
+	    padding-right: 5em;
+    position: relative;
+}
