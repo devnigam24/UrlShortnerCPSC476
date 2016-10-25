@@ -1,4 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="java.util.HashMap"%>
 <%@ page import="java.util.Iterator"%>
 <html>
@@ -7,8 +6,8 @@
 <%
 	HashMap UrlMap = (HashMap)request.getAttribute("UserUrls");
 	HashMap UrlCountsMap = (HashMap)request.getAttribute("userUrlsCount");
+	Iterator<String> url =  UrlMap.keySet().iterator(); 
 %>
-${UrlMap}
 </head>
 <body>
 	<table>
@@ -22,13 +21,14 @@ ${UrlMap}
 
 		<tbody>
 			<% 
-				Iterator<String> i =  UrlMap.keySet().iterator(); 
-				while(i.hasNext()){ String key = (String) i.next();%>
+				while(url.hasNext()){ 
+				String key = (String) url.next();
+			%>
 					<tr>
 						<td><%= key %></td>
 						<td><%= UrlMap.get(key) %></td>
-						<td>$0.87</td>
-					</tr>
+						<td><%if(UrlCountsMap.get(UrlMap.get(key)) == null){%><%=0%><%}
+						else{%><%= UrlCountsMap.get(UrlMap.get(key)) %><%}%></td>
 				<%}%>
 		</tbody>
 	</table>
