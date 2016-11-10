@@ -13,7 +13,7 @@
 		<%
 			if (errorMessage != null) {
 		%>
-		<h3 style="color: orangered;text-align: center;"><%=errorMessage%></h3>
+		<h3 style="color: orangered; text-align: center;"><%=errorMessage%></h3>
 		<%
 			}
 		%>
@@ -23,8 +23,9 @@
 				<form action="SignUpServlet" method="post">
 					<div class="row">
 						<div class="input-field col s6">
-							<input name="username" <%if (username != null) %> value=<%=username%> id="username" type="text"
-								class="validate"> <label for="username">Username</label>
+							<input name="username" <%if (username != null){%>
+								value=<%=username%><%} %> id="username" type="text" class="validate">
+							<label for="username">Username</label>
 						</div>
 					</div>
 					<div class="row">
@@ -72,7 +73,7 @@
 					</div>
 					<div class="input-field col s10">
 						<input id="loginPwd" name="loginPwd" type="password"> <label
-							for="loginPwd">Password</label>
+							for="loginPwd">Has to be CorrectPassword</label>
 					</div>
 					<div class="row">
 						<div class="input-field col s6">
@@ -80,6 +81,16 @@
 						</div>
 					</div>
 				</form>
+
+				<br>
+				<br>
+				<br>
+				<div class="row">
+					<div class="input-field col s6">
+						<input type="button" value="Guest User"
+							onclick="window.location.href='publicUrlShortner.jsp'">
+					</div>
+				</div>
 			</div>
 
 

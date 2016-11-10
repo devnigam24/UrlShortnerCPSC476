@@ -3,13 +3,29 @@
 <html>
 <head>
 <%@include file="includes/assets.jsp"%>
+<%@ page import="com.fullerton.edu.cpsc.cpsc476.pojo.NewUserDetails"%>
+<%@ page import="com.fullerton.edu.cpsc.cpsc476.Util.ErrorAndMessages"%>
+<%@ page import="com.fullerton.edu.cpsc.cpsc476.Util.ShowErrorPageUtil"%>
 <%
-	HashMap UrlMap = (HashMap)request.getAttribute("UserUrls");
-	HashMap UrlCountsMap = (HashMap)request.getAttribute("userUrlsCount");
-	Iterator<String> url =  UrlMap.keySet().iterator(); 
+	NewUserDetails thisUser = (NewUserDetails) session.getAttribute("userInsession");
+	String userName = "";
+
+	if (thisUser == null || thisUser.getUsername().equals(null) || thisUser.getUsername().equals("")) {
+		session.invalidate();
+		ShowErrorPageUtil.redirectToErrorPage(request, response, "signUp.jsp",
+				ErrorAndMessages.privatePageAccessError);
+		return;
+	} else {
+		userName = thisUser.getUsername();
+	}
+	HashMap UrlMap = (HashMap) request.getAttribute("UserUrls");
+	HashMap UrlCountsMap = (HashMap) request.getAttribute("userUrlsCount");
+	Iterator<String> url = UrlMap.keySet().iterator();
 %>
 </head>
 <body>
+	<h3>
+		Welcome ---->>>><%=userName%></h3>
 	<table>
 		<thead>
 			<tr>
@@ -20,17 +36,28 @@
 		</thead>
 
 		<tbody>
-			<% 
-				while(url.hasNext()){ 
-				String key = (String) url.next();
+			<%
+				while (url.hasNext()) {
+					String key = (String) url.next();
 			%>
-					<tr>
-						<td><%= key %></td>
-						<td><%= UrlMap.get(key) %></td>
-						<td><%if(UrlCountsMap.get(UrlMap.get(key)) == null){%><%=0%><%}
-						else{%><%= UrlCountsMap.get(UrlMap.get(key)) %><%}%></td>
-				<%}%>
+			<tr>
+				<td><%=key%></td>
+				<td><%=UrlMap.get(key)%></td>
+				<%Integer hitsCount = (Integer)UrlCountsMap.get(UrlMap.get(key)); %>
+				<td><%if(hitsCount == null){hitsCount = 0;}%><%=hitsCount%></td>
+				<%
+					}
+				%>
+			
 		</tbody>
 	</table>
+
+	<div class="row col s4">
+		<form action="LogOut" method="post">
+			<div class="input-field col s6 right">
+				<input type="submit" value="Logout">
+			</div>
+		</form>
+	</div>
 </body>
 </html>

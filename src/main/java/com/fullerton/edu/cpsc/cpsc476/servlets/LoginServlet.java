@@ -49,7 +49,7 @@ public class LoginServlet extends HttpServlet {
 		if (checkLoginCredentials(password)) {
 			try {
 				HttpSession thisSession = request.getSession();
-				NewUserDetails newUser = new NewUserDetails(userName, "abc@xyz.com", password);
+				NewUserDetails newUser = new NewUserDetails(userName, "abc@xyz.com", password, false);
 				thisSession.setAttribute("userInsession", newUser);
 				request.getRequestDispatcher("welcome.jsp").forward(request, response);
 			} catch (ServletException e) {
@@ -60,7 +60,8 @@ public class LoginServlet extends HttpServlet {
 				return;
 			}
 		} else {
-			ShowErrorPageUtil.redirectToErrorPage(request, response, "signUp.jsp", ErrorAndMessages.loginCredentialMisMatch);
+			ShowErrorPageUtil.redirectToErrorPage(request, response, "signUp.jsp",
+					ErrorAndMessages.loginCredentialMisMatch);
 			return;
 		}
 	}

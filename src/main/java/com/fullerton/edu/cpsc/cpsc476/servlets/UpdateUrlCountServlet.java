@@ -36,7 +36,7 @@ public class UpdateUrlCountServlet extends HttpServlet {
 							ErrorAndMessages.serverDown);
 					return;
 				}
-				if (userObject.getUrlShornerUrlCountMap().containsKey(shortUrl)) {
+				if (userObject.getUrlShornerMap().containsValue(shortUrl)) {
 					urlCount = userObject.getUrlShornerUrlCountMap().get(shortUrl);
 				}
 				userObject.getUrlShornerUrlCountMap().put(shortUrl, ++urlCount);

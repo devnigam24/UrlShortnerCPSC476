@@ -1,1 +1,4 @@
-<% response.sendRedirect("signUp.jsp"); %>
+
+<%
+	response.sendRedirect("signUp.jsp");
+%>

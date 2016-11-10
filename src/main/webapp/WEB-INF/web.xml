@@ -31,6 +31,10 @@
 		<servlet-name>UpdateUrlCountServlet</servlet-name>
 		<servlet-class>com.fullerton.edu.cpsc.cpsc476.servlets.UpdateUrlCountServlet</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>Short</servlet-name>
+		<servlet-class>com.fullerton.edu.cpsc.cpsc476.servlets.Short</servlet-class>
+	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>SignUpServlet</servlet-name>
@@ -52,5 +56,9 @@
 	<servlet-mapping>
 		<servlet-name>UpdateUrlCountServlet</servlet-name>
 		<url-pattern>/UpdateUrlCountServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Short</servlet-name>
+		<url-pattern>/Short/*</url-pattern>
 	</servlet-mapping>
 </web-app>

@@ -55,7 +55,7 @@ public class SignUpServlet extends HttpServlet {
 		}
 		if (password.equals(confirm)) {
 			try {
-				NewUserDetails newUser = new NewUserDetails(username, email, password);
+				NewUserDetails newUser = new NewUserDetails(username, email, password,false);
 				HttpSession session = req.getSession();
 				session.setAttribute("userInsession", newUser);
 				req.getRequestDispatcher("welcome.jsp").forward(req, res);
